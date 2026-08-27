@@ -384,6 +384,7 @@ function drawRoutes(){
       pill.textContent=c.no;
       pill.addEventListener('click',ev=>{
         ev.stopPropagation();
+        if(!selectMode){ toast('“걸은 코스 기록”을 먼저 눌러주세요'); return; }
         toggleCourse(s.id,c.id);
         const on=(progress[s.id]||[]).includes(c.id);
         toast(`${c.name} ${on?'완주 ✓':'해제'}`);
