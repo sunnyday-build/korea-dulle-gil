@@ -82,10 +82,10 @@
   }
   .btn{
     flex:1; border:0; border-radius:14px; padding:15px 10px; font-size:15px; font-weight:700;
-    background:#ffffff; color:#141a21; box-shadow:0 4px 14px rgba(0,0,0,.35); cursor:pointer;
+    background:#474B54; color:#ffffff; box-shadow:0 4px 14px rgba(0,0,0,.35); cursor:pointer;
   }
   .btn:active{transform:scale(.98)}
-  .btn.stop{background:var(--danger); box-shadow:0 4px 14px rgba(216,67,58,.3)}
+  .btn.stop{background:var(--green); color:var(--on-accent); box-shadow:0 4px 14px rgba(0,0,0,.3)}
   .btn.ghost{background:var(--card); color:var(--ink); border:1px solid var(--line); box-shadow:none; flex:0 0 auto; width:56px; padding:15px 0}
   .btn.pause{background:var(--cbtn); color:var(--ink); box-shadow:none}
 
@@ -368,7 +368,7 @@ function drawRoutes(){
       c.segs.forEach(sg=>{
         const line = new kakao.maps.Polyline({
           path: sg.map(p=>new kakao.maps.LatLng(p[0],p[1])),
-          strokeWeight: walked?6:4, strokeColor: walked?'#ffffff':'#474B54',
+          strokeWeight: walked?6:4, strokeColor: walked?s.color:'#474B54',
           strokeOpacity: walked?1:0.9, strokeStyle:'solid'
         });
         line.setMap(map);
@@ -395,7 +395,7 @@ function drawRoutes(){
 function updateLabels(){
   if(!map) return;
   const lvl = map.getLevel();
-  const showNum = lvl<=7, showDot = lvl<=11;
+  const showNum = lvl<=9, showDot = lvl<=11;
   labelLayers.forEach(o=>o.setMap(showNum?map:null));
   boundaryLayers.forEach(o=>o.setMap(showDot?map:null));
 }
