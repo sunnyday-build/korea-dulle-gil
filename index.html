@@ -368,7 +368,7 @@ function drawRoutes(){
       c.segs.forEach(sg=>{
         const line = new kakao.maps.Polyline({
           path: sg.map(p=>new kakao.maps.LatLng(p[0],p[1])),
-          strokeWeight: walked?6:4, strokeColor: walked?s.color:'#474B54',
+          strokeWeight: walked?6:4, strokeColor: walked?'#ffffff':'#474B54',
           strokeOpacity: walked?1:0.9, strokeStyle:'solid'
         });
         line.setMap(map);
