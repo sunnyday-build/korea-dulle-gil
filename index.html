@@ -395,7 +395,7 @@ function drawRoutes(){
 function updateLabels(){
   if(!map) return;
   const lvl = map.getLevel();
-  const showNum = lvl<=9, showDot = lvl<=11;
+  const showNum = lvl<=11, showDot = lvl<=11;
   labelLayers.forEach(o=>o.setMap(showNum?map:null));
   boundaryLayers.forEach(o=>o.setMap(showDot?map:null));
 }
