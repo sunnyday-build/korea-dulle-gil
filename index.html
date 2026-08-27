@@ -39,9 +39,10 @@
   .panel.active{display:flex}
 
   /* map panel */
-  #map{position:absolute; inset:0; z-index:0; background:#0b0f14}
+  /* !important 로 카카오가 인라인으로 까는 밝은 체커보드(bg_tile.png)를 덮어 격자 제거 */
+  #map{position:absolute; inset:0; z-index:0; background:#070a0e !important}
   /* 타일(img)만 반전해 다크맵으로. 코스선(SVG)·오버레이는 원색 유지 */
-  #map img{filter:invert(1) hue-rotate(180deg) brightness(.92) contrast(.9)}
+  #map img{filter:invert(1) hue-rotate(180deg) brightness(.58) contrast(1.06) saturate(.5)}
   .map-overlay{
     position:absolute; left:12px; right:12px; top:12px; z-index:500;
     display:flex; gap:8px; flex-wrap:wrap; pointer-events:none;
@@ -325,12 +326,16 @@ function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t
 /* ============ 지도 ============ */
 let map, meMarker, meCircle, liveLine, courseIW=null, meOverlay=null;
 function initMap(){
+  // #v=lat,lng,level 해시가 있으면 그 위치로 시작(공유·디버그용)
+  const hv = location.hash.match(/^#v=(-?[\d.]+),(-?[\d.]+),(\d+)/);
   map = new kakao.maps.Map(document.getElementById('map'), {
-    center: new kakao.maps.LatLng(36.5, 127.9), level: 13
+    center: hv ? new kakao.maps.LatLng(+hv[1],+hv[2]) : new kakao.maps.LatLng(36.5, 127.9),
+    level: hv ? +hv[3] : 13
   });
   kakao.maps.event.addListener(map, 'zoom_changed', updateLabels);
   drawRoutes();       // 코스별 실측 경로 (선택 구간만)
-  fitToFilter();      // 선택 구간에 맞춰 화면 이동
+  if(!hv) fitToFilter();  // 해시 지정이 없을 때만 구간에 맞춰 화면 이동
+  else updateLabels();
 }
 // 선택한 구간(들)만 화면에 담기
 function fitToFilter(){
@@ -390,7 +395,7 @@ function drawRoutes(){
 function updateLabels(){
   if(!map) return;
   const lvl = map.getLevel();
-  const showNum = lvl<=6, showDot = lvl<=9;
+  const showNum = lvl<=7, showDot = lvl<=11;
   labelLayers.forEach(o=>o.setMap(showNum?map:null));
   boundaryLayers.forEach(o=>o.setMap(showDot?map:null));
 }
