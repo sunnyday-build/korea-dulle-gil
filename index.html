@@ -25,7 +25,7 @@
   /* ---------- Header ---------- */
   header{
     padding:calc(10px + var(--safe-t)) 16px 10px;
-    background:var(--green); color:var(--on-accent); flex:0 0 auto;
+    background:var(--card); color:var(--ink); border-bottom:1px solid var(--line); flex:0 0 auto;
     display:flex; align-items:center; justify-content:space-between; gap:10px;
   }
   header h1{font-size:17px; margin:0; font-weight:700; letter-spacing:-.3px}
@@ -82,7 +82,7 @@
   }
   .btn{
     flex:1; border:0; border-radius:14px; padding:15px 10px; font-size:15px; font-weight:700;
-    background:var(--green); color:var(--on-accent); box-shadow:0 4px 14px rgba(147,211,218,.3); cursor:pointer;
+    background:#ffffff; color:#141a21; box-shadow:0 4px 14px rgba(0,0,0,.35); cursor:pointer;
   }
   .btn:active{transform:scale(.98)}
   .btn.stop{background:var(--danger); box-shadow:0 4px 14px rgba(216,67,58,.3)}
@@ -108,14 +108,14 @@
   /* course panel */
   .scroll{flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:14px 14px calc(90px + var(--safe-b))}
   .total-card{
-    background:linear-gradient(135deg,var(--green),var(--green-d)); color:var(--on-accent); border-radius:18px;
-    padding:16px 18px; margin-bottom:14px; box-shadow:0 6px 20px rgba(21,92,57,.25);
+    background:var(--card); color:var(--ink); border:1px solid var(--line); border-radius:18px;
+    padding:16px 18px; margin-bottom:14px; box-shadow:0 6px 20px rgba(0,0,0,.3);
   }
   .total-card .big{font-size:30px; font-weight:800; letter-spacing:-1px}
-  .total-card .big small{font-size:14px; font-weight:600; opacity:.85}
-  .total-card .meta{font-size:12px; opacity:.9; margin-top:2px}
-  .tbar{height:8px; border-radius:99px; background:rgba(255,255,255,.28); margin-top:10px; overflow:hidden}
-  .tbar > i{display:block; height:100%; background:#fff; border-radius:99px; transition:width .4s}
+  .total-card .big small{font-size:14px; font-weight:600; color:var(--muted)}
+  .total-card .meta{font-size:12px; color:var(--muted); margin-top:2px}
+  .tbar{height:8px; border-radius:99px; background:var(--line); margin-top:10px; overflow:hidden}
+  .tbar > i{display:block; height:100%; background:var(--green); border-radius:99px; transition:width .4s}
 
   .sec-card{background:var(--card); border:1px solid var(--line); border-radius:16px; margin-bottom:12px; overflow:hidden}
   .sec-head{display:flex; align-items:center; gap:12px; padding:14px 15px; cursor:pointer}
@@ -179,9 +179,9 @@
   .crs-num-pill{display:inline-flex; align-items:center; justify-content:center; background:#fff;
     border:1.5px solid; border-radius:7px; font-size:10px; font-weight:800; line-height:1;
     padding:1px 5px; box-shadow:0 1px 3px rgba(0,0,0,.28); white-space:nowrap}
-  .me-dot{display:block; width:16px; height:16px; border-radius:50%; background:var(--green);
-    border:3px solid #fff; box-shadow:0 0 0 2px rgba(31,122,77,.4), 0 2px 6px rgba(0,0,0,.3)}
-  .locate-btn svg{width:24px;height:24px;color:var(--green);display:block}
+  .me-dot{display:block; width:16px; height:16px; border-radius:50%; background:#fff;
+    border:3px solid #141a21; box-shadow:0 0 0 2px rgba(255,255,255,.5), 0 2px 6px rgba(0,0,0,.45)}
+  .locate-btn svg{width:24px;height:24px;color:var(--ink);display:block}
   .crs-num{background:none;border:none}
   .crs-num span{display:inline-flex;align-items:center;justify-content:center;background:#fff;
     border:1.5px solid; border-radius:7px; font-size:10px; font-weight:800; line-height:1;
@@ -233,8 +233,8 @@
         <div class="chip rec" id="recChip" style="display:none">
           <span class="dot"></span>기록 중
         </div>
-        <div class="chip" id="selHint" style="display:none;background:var(--green);color:var(--on-accent);border-color:transparent">
-          <span class="dot" style="background:var(--on-accent)"></span>걸은 코스를 탭하세요
+        <div class="chip" id="selHint" style="display:none;background:var(--card);color:var(--ink);border-color:var(--line)">
+          <span class="dot" style="background:#fff"></span>걸은 코스를 탭하세요
         </div>
       </div>
 
